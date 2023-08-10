@@ -9,4 +9,4 @@ Code will be released soon!
 Dataset can be downloaded at [GoogleDrive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).
 
 # Acknowledgements
-This dataset is refined based on the dataset of [NightCity](https://dmcv.sjtu.edu.cn/people/phd/tanxin/NightCity/index.html) by Xin Tan et al.
+This dataset is refined based on the dataset of [NightCity](https://dmcv.sjtu.edu.cn/people/phd/tanxin/NightCity/index.html) by Xin Tan *et al.* and [NightLab](https://github.com/xdeng7/NightLab) by Xueqing Deng *et al.*.
