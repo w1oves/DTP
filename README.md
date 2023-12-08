@@ -6,7 +6,7 @@ This repository implements a PyTorch re-implementation of the research paper: ["
 
 ## Dataset
 
-Access the dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).
+**Access the refined train and val dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).**
 
 ## Environment Setup
 
