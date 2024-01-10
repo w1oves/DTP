@@ -6,7 +6,7 @@ This repository implements a PyTorch re-implementation of the research paper: ["
 
 ## Dataset
 
-**Access the refined train and val dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).**
+Access the dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).
 
 ## Environment Setup
 
@@ -61,12 +61,15 @@ python custom-tools/test.py checkpoints/night/cfg.py checkpoints/night/night.pth
 ```
 
 ## Training
-
-Start training with:
-
-```bash
-python custom-tools/train.py </path/to/your/config>
-```
+1. Download pre-training weight from [Google Drive](https://drive.google.com/file/d/15zENvGjHlM71uKQ3d2FbljWPubtrPtjl/view).
+2. Convert it to MMSeg format using:
+    ```bash
+    python custom-tools/swin2mmseg.py </path/to/pretrain> </path/to/output>
+    ```
+3. Start training with:
+    ```bash
+    python custom-tools/train.py </path/to/your/config>
+    ```
 
 ## Results
 
@@ -81,6 +84,8 @@ The table below summarizes our findings:
 This dataset is refined based on the dataset of [NightCity](https://dmcv.sjtu.edu.cn/people/phd/tanxin/NightCity/index.html) by Xin Tan *et al.* and [NightLab](https://github.com/xdeng7/NightLab) by Xueqing Deng *et al.*.
 
 This project is based on the [mmsegmentation](https://github.com/open-mmlab/mmsegmentation.git).
+
+Pretraining checkpoint comes from the [SimMIM](https://github.com/microsoft/SimMIM).
 
 The annotation process was completed using [LabelMe](https://github.com/wkentaro/labelme.git).
 
