@@ -9,7 +9,7 @@ from setuptools import find_packages, setup
 
 
 def readme():
-    with open('MMSEG_README.md', encoding='utf-8') as f:
+    with open('README.md', encoding='utf-8') as f:
         content = f.read()
     return content
 
