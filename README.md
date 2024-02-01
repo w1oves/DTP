@@ -27,7 +27,7 @@ pip install -v -e .
 ### Download and Organize
 
 1. Decompress the dataset and relocate it to `data/nightcity-fine`.
-2. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1iAjmJKc6pww2Nm_Vz4fJqQ9EF5sjyEE0/view?usp=sharing) and place it in `checkpoints`.
+2. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1g-32y3N3RGOOiCe7hfjJKmB2D70w0Nrp/view?usp=drive_link) and place it in `checkpoints`.
 
 Your directory structure should resemble:
 
