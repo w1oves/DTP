@@ -6,7 +6,9 @@ This repository implements a PyTorch re-implementation of the research paper: ["
 
 ## Dataset
 
-Access the dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).
+Nightcity-fine: Access the dataset via [Google Drive](https://drive.google.com/file/d/1Ilj99NMAmkZIPQcVOd6cJebnKXjJ-Sit/view?usp=drive_link).
+
+Cityscapes: Access the dataset via [cityscapes-dataset.com](https://www.cityscapes-dataset.com/downloads/).
 
 ## Environment Setup
 
@@ -16,6 +18,8 @@ Set up your environment with these steps:
 conda create -n dtp python=3.10
 conda activate dtp
 conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
+# Alternatively: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu116
+pip install tensorboard
 pip install -U openmim
 mim install mmcv-full
 pip install -v -e .
@@ -26,8 +30,38 @@ pip install -v -e .
 
 ### Download and Organize
 
-1. Decompress the dataset and relocate it to `data/nightcity-fine`.
-2. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1g-32y3N3RGOOiCe7hfjJKmB2D70w0Nrp/view?usp=drive_link) and place it in `checkpoints`.
+1. Decompress the `nightcity-fine.zip` dataset and relocate it to `./data/nightcity-fine`.
+
+2. Download Cityscapes
+
+   1. [gtFine_trainvaltest.zip (241MB)](https://www.cityscapes-dataset.com/file-handling/?packageID=1) [[md5\]](https://www.cityscapes-dataset.com/md5-sum/?packageID=1) 
+
+   2. [gtCoarse.zip (1.3GB)](https://www.cityscapes-dataset.com/file-handling/?packageID=2) [[md5\]](https://www.cityscapes-dataset.com/md5-sum/?packageID=2)
+
+   3. [leftImg8bit_trainvaltest.zip (11GB)](https://www.cityscapes-dataset.com/file-handling/?packageID=3) [[md5\]](https://www.cityscapes-dataset.com/md5-sum/?packageID=3)
+
+   4. ```shell
+      git clone https://github.com/mcordts/cityscapesScripts.git
+      
+      pip install cityscapesscripts
+      ```
+
+   5. Extract all the above zip files and git repo into the `./data` folder
+
+   6. ```shell
+      vim cityscapesScripts/cityscapesscripts/preparation/createTrainIdLabelImgs.py 
+      
+      Add the next line of code after `import os`
+      os.envieron['CITYSCAPES_DATASET'] = "../../../"
+      
+      python cityscapesScripts/cityscapesscripts/preparation/createTrainIdLabelImgs.py
+      
+      mkdir cityscapes
+      
+      mv gtFine cityscapes && mv leftImg8bit cityscapes
+      ```
+
+3. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1iAjmJKc6pww2Nm_Vz4fJqQ9EF5sjyEE0/view?usp=sharing) and place it in `./checkpoints`.
 
 Your directory structure should resemble:
 
@@ -35,7 +69,8 @@ Your directory structure should resemble:
 .
 ├── checkpoints
 │   ├── night
-│   └── night+day
+│   ├── night+day
+|	└── simmim_pretrain__swin_base__img192_window6__800ep.pth
 ├── custom
 ├── custom-tools
 │   ├── dist_test.sh
@@ -43,8 +78,12 @@ Your directory structure should resemble:
 │   ├── test.py
 │   └── train.py
 ├── data
-│   ├── cityscapes -> /data0/wzx/data/darkseg-data/cityscapes/
+│   ├── cityscapes
+│	│	├── gtFine
+│	│	└── leftImg8bit
 │   └── nightcity-fine
+│		├── train
+│		└── val
 ├── mmseg
 ├── readme.md
 ├── requirements.txt
@@ -63,12 +102,13 @@ python custom-tools/test.py checkpoints/night/cfg.py checkpoints/night/night.pth
 ## Training
 1. Download pre-training weight from [Google Drive](https://drive.google.com/file/d/15zENvGjHlM71uKQ3d2FbljWPubtrPtjl/view).
 2. Convert it to MMSeg format using:
-    ```bash
-    python custom-tools/swin2mmseg.py </path/to/pretrain> </path/to/output>
+    ```shell
+    python custom-tools/swin2mmseg.py </path/to/pretrain> checkpoints/simmim_pretrain__swin_base__img192_window6__800ep.pth
     ```
 3. Start training with:
-    ```bash
+    ```shell
     python custom-tools/train.py </path/to/your/config>
+    # </path/to/your/config>：our config: checkpoints/night/cfg.py or checkpoints/night+day/cfg.py
     ```
 
 ## Results
