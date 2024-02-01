@@ -70,7 +70,7 @@ Your directory structure should resemble:
 ├── checkpoints
 │   ├── night
 │   ├── night+day
-|	└── simmim_pretrain__swin_base__img192_window6__800ep.pth
+|   └── simmim_pretrain__swin_base__img192_window6__800ep.pth
 ├── custom
 ├── custom-tools
 │   ├── dist_test.sh
@@ -79,11 +79,11 @@ Your directory structure should resemble:
 │   └── train.py
 ├── data
 │   ├── cityscapes
-│	│	├── gtFine
-│	│	└── leftImg8bit
+│   │   ├── gtFine
+│   │   └── leftImg8bit
 │   └── nightcity-fine
-│		├── train
-│		└── val
+│       ├── train
+│       └── val
 ├── mmseg
 ├── readme.md
 ├── requirements.txt
