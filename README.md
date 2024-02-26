@@ -61,7 +61,7 @@ pip install -v -e .
       mv gtFine cityscapes && mv leftImg8bit cityscapes
       ```
 
-3. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1iAjmJKc6pww2Nm_Vz4fJqQ9EF5sjyEE0/view?usp=sharing) and place it in `./checkpoints`.
+3. Download the checkpoint from [Google Drive](https://drive.google.com/file/d/1g-32y3N3RGOOiCe7hfjJKmB2D70w0Nrp/view?usp=drive_link) and place it in `./checkpoints`.
 
 Your directory structure should resemble:
 
